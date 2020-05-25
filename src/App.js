@@ -1,40 +1,31 @@
 import React from 'react';
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
-function Food({name}){
-  return <h1>I like {name}</h1>
-}
+//React Class Component
+class App extends React.Component {
 
-Food.PropTypes = {
-  name:PropTypes.string.isRequired,
-};
+  state = {
+    count : 0
+  };
 
-const foodILike = [
-  {
-    "id":1,
-    "name":"Kimchi"},
-  {
-    "id":2,
-    "name":"Ramyun"},
-  {
-    "id":3,
-    "name":"Samgiopsal"},
-  {
-    "id":4,
-    "name":"chukumi"}];
+  add = () =>{
+    
+  };
+  minus = () =>{
+    
+  };
 
-
-function renderFood(dish){
-  return <Food key={dish.id} name={dish.name} />
-}//renderFood() end
-
-function App() {
-  return (
-    <div className="App"> 
-    <h1>Hello</h1>
-    {foodILike.map(renderFood)}
+  render(){
+    return (
+    <div>
+      <h1>The number is {this.state.count}</h1>
+      <button onClick={this.add}>Add</button>
+      <button onClick={this.minus}>Minus</button>
     </div>
-  );
-}
+    );
+  };
+
+}//App end
+
 
 export default App;
