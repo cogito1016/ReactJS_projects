@@ -1,4 +1,4 @@
-#React & Next
+# React & Next
 
 간략하게 적어보는 학습순서..
 React -> Hook -> Next -> Redux Ts 등..
