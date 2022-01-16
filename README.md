@@ -47,3 +47,26 @@ css-prop을 사용하던가. (inner-style 방식과 유사)
 css modules를 사용하던가 (ex Component.module.css 이 방식 사용 시 random-class-name을 가지게 됨)
 styled-component 라이브러리를 사용하던가.
 
+6.
+State - 리액트가 관리하는 데이터가 저장되는 곳
+
+6-1.
+counter을 변수로만 설정하고 counter+1을 아무리 해준다 해도 UI는 변함이 없다.
+그 이유는, 렌더링에 영향을 주지 않기 때문.
+결과적으로, counter+1을 해준 후 rerendering해주면 된다.
+그렇지만 개발할 때마다 이렇게 해줘야할까?
+더 좋은 방법은 없을까?
+==> React에서 데이터를 관리하며, 데이터가 변경될 때 마다 리렌더링을 해주는 State를 이용하자.
+
+const data = React.useState(default_value);
+console.log(data);
+data = Array. 
+data = [default_value, func]
+constt [counter, setCounter] = React.useState(0);
+
+
+6-2.
+Vanila는 업데이트 시 업데이트되는 요소의 부모까지 업데이트하는 반면, React는 대상이 되는 요소만 업데이트를 시켜준다. ==> 이 부분이 Virtual Dom 인듯?
+
+
+
