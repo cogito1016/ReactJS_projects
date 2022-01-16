@@ -36,4 +36,14 @@ JSX
 -React요소생성코드 -> JSX로 바꿔주는것은 Babel
 
 4.
+npm install prop-types
+PropTypes 라이브러리를 이용하면 Props로 넘어온 데이터의 타입 및 필수유무를 지정할 수 있다(+a)
+그러나 이 부분은 TypeScript로 더 개선시킬 수 있지않을까 싶다.
+
+5.
+CSS
+css파일을 import해오던가.
+css-prop을 사용하던가. (inner-style 방식과 유사)
+css modules를 사용하던가 (ex Component.module.css 이 방식 사용 시 random-class-name을 가지게 됨)
+styled-component 라이브러리를 사용하던가.
 
