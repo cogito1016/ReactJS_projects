@@ -68,5 +68,18 @@ constt [counter, setCounter] = React.useState(0);
 6-2.
 Vanila는 업데이트 시 업데이트되는 요소의 부모까지 업데이트하는 반면, React는 대상이 되는 요소만 업데이트를 시켜준다. ==> 이 부분이 Virtual Dom 인듯?
 
+setCounter을 사용해서 state를 바꾸면, 컴포넌트가 재생성되고 컴포넌트의 코드도 재 실행된다. 바뀐 State의 값을 사용해서! 
+그러나 바뀌지않은 부분은 그대로 두고, 바뀌는 부분만 재생성한다.
+
+7.
+State Function
+setCounter(counter+1)의 방법으로 이전의 값+1을 해줄수는있지만, 안전하지는 않다.
+왜냐하면 counter 가 항상 이전의값을 보장하지는 않기때문이다.
+(다른곳에서도 수정가능하기 때문)
+따라서
+setCounter(counter+1) (X)
+setCounter((current)=>current+1) (O)
+setState에 함수를넘기면, 첫 인자는 이전값을 의미(보장)한다.
+따라서 이 방식으로 해주는게 더 안전하다.
 
 

@@ -5,8 +5,7 @@ function App() {
   const [counter, setCounter] = useState(0);
 
   const counterUp = () => {
-    const nextCounter = counter + 1;
-    setCounter(nextCounter);
+    setCounter((current) => current + 1);
   };
 
   return (
