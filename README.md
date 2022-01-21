@@ -96,4 +96,6 @@ setCounter((current)=>current+1) (O)
 setState에 함수를넘기면, 첫 인자는 이전값을 의미(보장)한다.   
 따라서 이 방식으로 해주는게 더 안전하다. 
 
-
+### JSX
+for은 사용하면 안된다. => htmlfor사용   
+class도 사용하면 안된다. => className사용   

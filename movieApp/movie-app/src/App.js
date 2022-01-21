@@ -4,27 +4,36 @@ function App() {
   const [minutes, setMinutes] = useState(0);
   const [hours, setHours] = useState(0);
 
-  const convertHandler = (inputType) => {
-    console.log("함수발생");
-    if (inputType === "MINUTES") {
-      setHours(minutes / 60);
-    } else if (inputType === "HOURS") {
-      setMinutes(hours * 60);
+  const convertHandler = (e) => {
+    if (e.target.id === "minutes") {
+      const thisMinutes = e.target.value;
+      setMinutes(thisMinutes);
+      setHours(thisMinutes / 60);
+    } else if (e.target.id === "hours") {
+      const thisHours = e.target.value;
+      setHours(thisHours);
+      setMinutes(thisHours * 60);
     }
   };
 
   return (
     <div>
       <h1>Super Converter</h1>
+      <label htmlFor="minutes">분</label>
       <input
+        id="minutes"
         placeholder="Minutes"
-        defaultValue={minutes}
-        onChange={() => convertHandler("MINUTES")}
+        type="number"
+        value={minutes}
+        onChange={(e) => convertHandler(e)}
       />
+      <label htmlFor="hours">시</label>
       <input
+        id="hours"
         placeholder="Hours"
-        defaultValue={hours}
-        onChange={() => convertHandler("HOURS")}
+        type="number"
+        value={hours}
+        onChange={(e) => convertHandler(e)}
       />
     </div>
   );
