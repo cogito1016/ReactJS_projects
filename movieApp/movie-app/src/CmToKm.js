@@ -18,7 +18,6 @@ function CmToKm() {
 
   return (
     <div>
-      <h1>Super Converter</h1>
       <label htmlFor="cm">CM</label>
       <input
         id="cm"

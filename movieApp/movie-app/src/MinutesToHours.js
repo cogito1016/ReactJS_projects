@@ -18,7 +18,6 @@ function MinutesToHours() {
 
   return (
     <div>
-      <h1>Super Converter</h1>
       <label htmlFor="minutes">분</label>
       <input
         id="minutes"
