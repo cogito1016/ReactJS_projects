@@ -96,6 +96,32 @@ setCounter((current)=>current+1) (O)
 setState에 함수를넘기면, 첫 인자는 이전값을 의미(보장)한다.   
 따라서 이 방식으로 해주는게 더 안전하다. 
 
+
+```javascript
+if (e.target.id === "minutes") {
+      setMinutes(e.target.value);
+      setHours(minutes / 60);
+    }
+
+```
+위의 코드는 에러를 유발한다.   
+setMinutes로 minute값을 설정했다 하더라도   
+바로 state의 minute값을 사용할때는 지연시간이 발생한다.   
+즉, 한템포 늦게 반영이되는 현상을 겪게됨.   
+따라서 아래처럼 코드를 바꿔줬다.
+
+```javascript
+if (e.target.id === "minutes") {
+      const thisMinutes = e.target.value;
+      setMinutes(thisMinutes);
+      setHours(thisMinutes / 60);
+    }
+
+```
+사용자의 입력값만을 사용하면 된다.   
+괜히 state값에 적용했다해서 그 값을 그대로 사용하면 안됨.
+
+
 ### JSX
 for은 사용하면 안된다. => htmlfor사용   
 class도 사용하면 안된다. => className사용   
