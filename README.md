@@ -48,12 +48,7 @@ ceate-react-app의 프로젝트네이밍 컨벤션이 있는듯
 
 ### JSX
 -React요소생성코드를 HTML과 비슷한 방식으로 생성할 수 있게 해주는 문법   
--React요소생성코드 -> JSX로 바꿔주는것은 Babel   
-
-### PropTypes
--npm install prop-types   
--PropTypes 라이브러리를 이용하면 Props로 넘어온 데이터의 타입 및 필수유무를 지정할 수 있다(+a)   
-(그러나 이 부분은 TypeScript로 더 개선시킬 수 있지않을까 싶다)
+-React요소생성코드 -> JSX로 바꿔주는것은 Babel
 
 ### CSS
 1)css파일을 import해오던가.   
@@ -124,4 +119,50 @@ if (e.target.id === "minutes") {
 
 ### JSX
 for은 사용하면 안된다. => htmlfor사용   
-class도 사용하면 안된다. => className사용   
+class도 사용하면 안된다. => className사용
+
+### PROPS
+부모컴포넌트가 자식컴포넌트에게 데이터를 넘긴다.   
+Btn컴포넌트에게 key:banana value="Hello"를 담긴 객체를 넘긴다.   
+여러개여도 상관없음.   
+
+```javascript
+<Btn banana="Hello" />
+<Btn banana="World" />
+
+
+//How to get parent component props?
+//Way1
+function Btn({banana}){
+	console.log(banana);
+}
+
+//Way2
+function Btn(props){
+	console.log(props.banana);
+}
+```
+
+### React MEMO
+const MemorizedBtn = React.memo();
+부모컴포넌트가 변경사항이있으면, 자식컴포넌트는 모두 그려지게된다(re-render).   
+==>어플리케이션이 느려지는 원인이 될 수 있다.   
+
+#### Memo의 기능   
+-자식 컴포넌트의 props가 바뀐게 아니면,   
+부모 컴포넌트가 변경되었다 하더라도 자식컴포넌트를 re-render하지마세요!😄   
+
+### PropTypes
+-npm install prop-types   
+-PropTypes 라이브러리를 이용하면 Props로 넘어온 데이터의 타입 및 필수유무를 지정할 수 있다(+a)   
+(그러나 이 부분은 TypeScript로 더 개선시킬 수 있지않을까 싶다)
+
+### Effects
+ReactJS의 동작방식   
+state가 변화할때 컴포넌트를 Re-render시킨다.   
+그런데 특정 코드는, Re-render시 마다 실행되어도 되지만,   
+다른 코드는, Re-render시 마다 실행되지 않기를 원할 수 있다.   
+ex)API를통해 데이터를 가져올때, 처음에만 가져오고 싶은 경우   
+
+
+
