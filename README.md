@@ -28,7 +28,13 @@ React -> Hook -> Next -> Redux Ts 등..
 
 * React MEMO를 왜 사용하는가?
 
-* 
+* Effects를 왜 사용하는가? + 필요한 예시
+
+* useEffect는 어떤 인자를 받고, 각 인자의 역할은 무엇인가? 
+
+* Clean-up Function의 역할은 무엇이고 언제 사용하는가?
+
+* Clean-up Function은 어떻게 사용하는가?
 
 
 ## React Info
