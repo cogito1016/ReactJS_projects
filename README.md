@@ -173,27 +173,30 @@ ex)
 state가 변화할때 컴포넌트를 Re-render시킨다.   
 그런데 특정 코드는, Re-render시 마다 실행되어도 되지만,   
 다른 코드는, Re-render시 마다 실행되지 않기를 원할 수 있다.   
-ex)API를통해 데이터를 가져올때, 처음에만 가져오고 싶은 경우   
+ex)   
+1. API를통해 데이터를 가져올때, 처음에만 가져오고 싶은 경우   
+2. Input의 Value-state값을 변경 시 마다 api가 호출되는 경우   
 
 #### useEffect
 우리코드가 한번만 실행되도록 도와준다.   
-
+useEffect는 두 가지의 인자를 가진다.   
+1. 첫번째 인자 - 실행할 함수
+2. 두번째 인자 - 추적할 State값이 담긴 변수
 
 ```javascript
-console.log("I always run");
+  console.log("I always run");
 
-const IRunOnlyOnce = () => {
+  useEffect(() => {
     console.log("I run only once");
-  };
+  }, []);
 
-useEffect(IRunOnlyOnce, []);
+  useEffect(() => {
+    console.log('I run when "keyword" changes');
+  }, [keyword]);
 
-  return (
-    <div>
-      <h1>{count}</h1>
-      <button onClick={addCountHandler}>Add</button>
-    </div>
-  );
+  useEffect(() => {
+    console.log('I run when "counter" changes');
+  }, [count]);
 ```
 위 코드는 Btn클릭 시 State값이 수정된다.   
 State값이 수정될 시 컴포넌트가 Re-render되기 때문에 'I always run'은 하지만,   
