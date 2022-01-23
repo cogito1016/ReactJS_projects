@@ -1,19 +1,23 @@
-import { useState } from "react";
-import MinutesToHours from "./MinutesToHours";
-import CmToKm from "./CmToKm";
+import { useEffect, useState } from "react";
 
 function App() {
-  const [flip, setFlip] = useState(false);
+  const [count, setCount] = useState(0);
 
-  const clickFlipHandler = () => {
-    setFlip((current) => !current);
+  const addCountHandler = () => {
+    setCount((current) => current + 1);
   };
+
+  const IRunOnlyOnce = () => {
+    console.log("I run only once");
+  };
+
+  console.log("I always run");
+  useEffect(IRunOnlyOnce, []);
 
   return (
     <div>
-      <h1>Super Converter</h1>
-      <button onClick={clickFlipHandler}>바꾸기</button>
-      {flip === true ? <MinutesToHours /> : <CmToKm />}
+      <h1>{count}</h1>
+      <button onClick={addCountHandler}>Add</button>
     </div>
   );
 }

@@ -22,6 +22,15 @@ React -> Hook -> Next -> Redux Ts 등..
 
 * setState에 기존 state의 값을 사용하는것은 '최근State의값'을 사용하려는 의도이다. 그를위해 state값을 직접적으로 사용하곤 하는데, state값을 직접적으로 사용할 때 일어날 수 있는 위험요소와 이를 해결할 수 있는 방법에 대해 설명할 수 있는가?
 
+* JSX는 HTML과 다르다. 따라서 JSX에서는 쓸 수 없는 HTML의 속성들이있다. 몇가지 예시를 들 수 있는가?
+
+* PROPS의 목적과 사용방법을 설명할 수 있는가
+
+* React MEMO를 왜 사용하는가?
+
+* 
+
+
 ## React Info
 -전세계 상위1만개 웹사이트 중 44%는 React를 사용한다. (에어비앤비, 인스타, 페북, 어쩌구 등)   
 -페북이 만들고 투자   
@@ -159,10 +168,34 @@ const MemorizedBtn = React.memo();
 
 ### Effects
 ReactJS의 동작방식   
+
+ex)   
 state가 변화할때 컴포넌트를 Re-render시킨다.   
 그런데 특정 코드는, Re-render시 마다 실행되어도 되지만,   
 다른 코드는, Re-render시 마다 실행되지 않기를 원할 수 있다.   
 ex)API를통해 데이터를 가져올때, 처음에만 가져오고 싶은 경우   
 
+#### useEffect
+우리코드가 한번만 실행되도록 도와준다.   
 
+
+```javascript
+console.log("I always run");
+
+const IRunOnlyOnce = () => {
+    console.log("I run only once");
+  };
+
+useEffect(IRunOnlyOnce, []);
+
+  return (
+    <div>
+      <h1>{count}</h1>
+      <button onClick={addCountHandler}>Add</button>
+    </div>
+  );
+```
+위 코드는 Btn클릭 시 State값이 수정된다.   
+State값이 수정될 시 컴포넌트가 Re-render되기 때문에 'I always run'은 하지만,   
+'I run only once'는 반복하지않는다.   
 
