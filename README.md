@@ -181,12 +181,12 @@ ex)
 우리코드가 한번만 실행되도록 도와준다.   
 useEffect는 두 가지의 인자를 가진다.   
 1. 첫번째 인자 - 실행할 함수
-2. 두번째 인자 - 추적할 State값이 담긴 변수
+2. 두번째 인자 - 추적할 State값이 담긴 변수, dependencies   
 
 ```javascript
   console.log("I always run");
 
-  useEffect(() => {
+  useEffect(() => { //비어있다면 한번만 실행
     console.log("I run only once");
   }, []);
 
@@ -200,5 +200,14 @@ useEffect는 두 가지의 인자를 가진다.
 ```
 위 코드는 Btn클릭 시 State값이 수정된다.   
 State값이 수정될 시 컴포넌트가 Re-render되기 때문에 'I always run'은 하지만,   
-'I run only once'는 반복하지않는다.   
+'I run only once'는 반복하지않는다. 
+
+#### Cleanup Function  
+컴포넌트가 사라질때 실행되는 로직   
+useEffect의 첫 번째 인자에 들어갈 함수의 return에서 수행된다.   
+
+사용 ex).  
+1. 이벤트 리스너 삭제
+2. 로그 출력
+3. ...
 

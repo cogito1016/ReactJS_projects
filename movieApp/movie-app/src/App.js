@@ -7,7 +7,8 @@ function App() {
   console.log("I always run");
 
   useEffect(() => {
-    console.log("I run only once");
+    console.log("created :)");
+    return () => console.log("destroy :(");
   }, []);
 
   useEffect(() => {
