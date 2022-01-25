@@ -1,41 +1,36 @@
 import { useEffect, useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [keyword, setKeyword] = useState("");
+  const [toDo, setToDo] = useState("");
+  const [toDoList, setToDoList] = useState([]);
 
-  console.log("I always run");
-
-  useEffect(() => {
-    console.log("created :)");
-    return () => console.log("destroy :(");
-  }, []);
-
-  useEffect(() => {
-    console.log('I run when "keyword" changes');
-  }, [keyword]);
-
-  useEffect(() => {
-    console.log('I run when "counter" changes');
-  }, [count]);
-
-  const searchBarChangeHandler = (e) => {
-    setKeyword(e.target.value);
+  const onChange = (e) => {
+    setToDo(e.target.value);
   };
 
-  const addCountHandler = () => {
-    setCount((current) => current + 1);
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (toDo === "") {
+      return;
+    } else {
+      const value = toDoList.push(toDo);
+      setToDoList(value);
+    }
+    console.log(toDo);
+    console.log(toDoList);
   };
 
   return (
     <div>
-      <input
-        type="text"
-        placeholder="write it in this field!"
-        onChange={searchBarChangeHandler}
-      />
-      <h1>{count}</h1>
-      <button onClick={addCountHandler}>Add</button>
+      <form onSubmit={onSubmit}>
+        <input
+          onChange={onChange}
+          value={toDo}
+          type="text"
+          placeholder="Write Your To do ..."
+        />
+        <button>Add To Do</button>
+      </form>
     </div>
   );
 }
