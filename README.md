@@ -113,6 +113,16 @@ setCounter((current)=>current+1) (O)
 setState에 함수를넘기면, 첫 인자는 이전값을 의미(보장)한다.  
 따라서 이 방식으로 해주는게 더 안전하다.
 
+또, 배열의 경우에는 조금 더 신경을 써줘야한다.
+```javascript
+//crruent.push not function error 발생
+setToDoList((current) => current.push(toDo));
+
+//펼침연산자를 활용한 정상작동 코드
+setToDoList((current) => [...current, toDo]);
+```
+
+또,   
 ```javascript
 if (e.target.id === "minutes") {
   setMinutes(e.target.value);

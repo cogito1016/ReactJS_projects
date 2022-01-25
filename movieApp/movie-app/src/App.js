@@ -12,16 +12,16 @@ function App() {
     e.preventDefault();
     if (toDo === "") {
       return;
-    } else {
-      const value = toDoList.push(toDo);
-      setToDoList(value);
     }
-    console.log(toDo);
-    console.log(toDoList);
+    setToDo("");
+    setToDoList((current) => [...current, toDo]);
   };
+
+  console.log(toDoList);
 
   return (
     <div>
+      <h1>ToDoList : {toDoList.length}</h1>
       <form onSubmit={onSubmit}>
         <input
           onChange={onChange}
