@@ -246,4 +246,32 @@ useEffect의 첫 번째 인자에 들어갈 함수의 return에서 수행된다.
 3. ...
 
 
+### LIST를 JSX에서 출력
 
+map을 이용한다.   
+```javascript
+      <ul>
+        {toDoList.map((element) => {
+          return <li>{element}</li>;
+        })}
+      </ul>
+```
+LIST의 map을 사용하여, LIST의 각 요소에 접근한 뒤   
+각 element를 <li>{element}</li> 로 바꿔주는 작업을 한다.   
+그렇다면 결과적으로 jsx요소가 반환되기 때문에   
+화면에 정상적으로 출력할 수 있게 된다.   
+
+그러나 다음과같은 콘솔 오류를 얻을 수 있다.   
+- Warning: Each child in a list should have a unique "key" prop.   
+이것은 React가 기본적으로 모든 요소들을 인식하여 일어나는 일.   
+그럴 땐, key를 입력해주기만 하면된다.   
+map의 두 번째 인자로는 고유의 index가 있으므로 그것을 사용해 주면 됨.   
+
+```javascript
+      <ul>
+        {toDoList.map((element, index) => {
+          return <li key={index}>{element}</li>;
+        })}
+      </ul>
+```
+그렇다면 콘솔에러는 사라지게된다.   

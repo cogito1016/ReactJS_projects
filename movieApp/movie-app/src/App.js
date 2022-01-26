@@ -32,8 +32,8 @@ function App() {
         <button>Add To Do</button>
       </form>
       <ul>
-        {toDoList.map((element) => {
-          return <li>{element}</li>;
+        {toDoList.map((element, index) => {
+          return <li key={index}>{element}</li>;
         })}
       </ul>
     </div>
