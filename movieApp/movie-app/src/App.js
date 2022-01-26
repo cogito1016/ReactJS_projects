@@ -1,41 +1,22 @@
 import { useEffect, useState } from "react";
 
 function App() {
-  const [toDo, setToDo] = useState("");
-  const [toDoList, setToDoList] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [coins, setCoins] = useState([]);
 
-  const onChange = (e) => {
-    setToDo(e.target.value);
-  };
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-    if (toDo === "") {
-      return;
-    }
-    setToDo("");
-    setToDoList((current) => [...current, toDo]);
-  };
-
-  console.log(toDoList);
-
+  useEffect(() => {
+    //한번만 실행할 예정
+    fetch("https://api.coinpaprika.com/v1/tickers")
+      .then((response) => response.json())
+      .then((json) => {
+        setCoins(json);
+        setLoading(false);
+      });
+  }, []);
   return (
     <div>
-      <h1>ToDoList : {toDoList.length}</h1>
-      <form onSubmit={onSubmit}>
-        <input
-          onChange={onChange}
-          value={toDo}
-          type="text"
-          placeholder="Write Your To do ..."
-        />
-        <button>Add To Do</button>
-      </form>
-      <ul>
-        {toDoList.map((element, index) => {
-          return <li key={index}>{element}</li>;
-        })}
-      </ul>
+      <h1>The Coins!</h1>
+      {loading ? <strong>Loading...</strong> : null}
     </div>
   );
 }
