@@ -31,6 +31,11 @@ function App() {
         />
         <button>Add To Do</button>
       </form>
+      <ul>
+        {toDoList.forEach((element) => {
+          return <li>{element}</li>;
+        })}
+      </ul>
     </div>
   );
 }
