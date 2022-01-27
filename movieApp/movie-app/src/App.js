@@ -4,6 +4,10 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [coins, setCoins] = useState([]);
   const [property, setProperty] = useState(0);
+  const [selectedCoin, setSelectedCoin] = useState({
+    quotes: { USD: { price: 1 } },
+    symbol: "$",
+  });
 
   useEffect(() => {
     //한번만 실행할 예정
@@ -17,6 +21,14 @@ function App() {
 
   const onChangePropertyHandler = (e) => {
     setProperty(e.target.value);
+  };
+
+  const onClickCoinsOptionHandler = (e) => {
+    console.log("함수실행");
+    const selectedIndex = e.target.selectedIndex;
+    console.log(`INDEX : ${selectedIndex}`);
+    console.log(Object.assign(e.target[selectedIndex].value));
+    // setSelectedCoin(e.target[selectedIndex]);
   };
 
   console.log(property);
@@ -37,16 +49,19 @@ function App() {
             onChange={onChangePropertyHandler}
           />
           <br />
-          <select>
+          <select onChange={onClickCoinsOptionHandler} value={selectedCoin}>
             {coins.map((coin) => {
-              //coin객체에 id가있기에 그것을 사용하기로함
               return (
-                <option key={coin.id}>
+                <option key={coin.id} value={coin}>
                   {coin.name} ({coin.symbol})
                 </option>
               );
             })}
           </select>
+          <br />
+          <h2>
+            = {property / selectedCoin.quotes.USD.price} {selectedCoin.symbol}
+          </h2>
         </div>
       )}
     </div>
