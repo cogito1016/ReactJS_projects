@@ -17,6 +17,16 @@ function App() {
     <div>
       <h1>The Coins!</h1>
       {loading ? <strong>Loading...</strong> : null}
+      <ul>
+        {coins.map((coin) => {
+          //coin객체에 id가있기에 그것을 사용하기로함
+          return (
+            <li key={coin.id}>
+              {coin.name} ({coin.symbol}) = ${coin.quotes.USD.price}
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }
