@@ -25,13 +25,12 @@ function App() {
 
   const onClickCoinsOptionHandler = (e) => {
     console.log("함수실행");
+    console.log(e);
     const selectedIndex = e.target.selectedIndex;
     console.log(`INDEX : ${selectedIndex}`);
-    console.log(Object.assign(e.target[selectedIndex].value));
+    console.log(e.target[selectedIndex].value);
     // setSelectedCoin(e.target[selectedIndex]);
   };
-
-  console.log(property);
 
   return (
     <div>
