@@ -30,6 +30,7 @@ function App() {
           <div>
             {movies.map((movie) => (
               <div key={movie.id}>
+                <img src={movie.medium_cover_image} alt={movie.title} />
                 <h2>{movie.title}</h2>
                 <p>{movie.summary}</p>
 
