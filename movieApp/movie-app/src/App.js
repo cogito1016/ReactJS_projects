@@ -35,7 +35,7 @@ function App() {
                 <p>{movie.summary}</p>
 
                 <ul>
-                  {movie.genres !== undefined
+                  {movie.hasOwnProperty("genres")
                     ? movie.genres.map((genre) => <li key={genre}>{genre}</li>)
                     : null}
                 </ul>
