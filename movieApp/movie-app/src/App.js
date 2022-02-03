@@ -27,11 +27,19 @@ function App() {
       ) : (
         <div>
           <h1>Movies ({movies.length})</h1>
-          <ul>
-            {movies.map((element) => {
-              return <li key={element.id}>{element.title}</li>;
-            })}
-          </ul>
+          <div>
+            {movies.map((movie) => (
+              <div key={movie.id}>
+                <h2>{movie.title}</h2>
+                <p>{movie.summary}</p>
+                <ul>
+                  {movie.genres.map((genre, idx) => (
+                    <div key={idx}>{genre}</div>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>
