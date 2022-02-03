@@ -281,3 +281,8 @@ promis & then 패텁노다는 async & await 패턴을 사용
 then으로 이루어진 블록구조는 복잡하게 확장될 가능성이 크다.   
 경험상 예외처리도 힘들었음. 그에반해 어싱크어웨잇은 깔끔 😸   
 
+### Rounter
+Router란 URL을 보고있는 Component   
+URL에 따라서 HOME이나 Detail을 보여줄 수 있다면 아래의 예시를 들 수 있다.      
+localhost:3000/   
+localhost:3000/detail   
