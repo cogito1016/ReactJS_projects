@@ -32,10 +32,11 @@ function App() {
               <div key={movie.id}>
                 <h2>{movie.title}</h2>
                 <p>{movie.summary}</p>
+
                 <ul>
-                  {movie.genres.map((genre, idx) => (
-                    <div key={idx}>{genre}</div>
-                  ))}
+                  {movie.genres !== undefined
+                    ? movie.genres.map((genre) => <li key={genre}>{genre}</li>)
+                    : null}
                 </ul>
               </div>
             ))}
