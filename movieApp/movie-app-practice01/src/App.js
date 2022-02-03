@@ -1,30 +1,37 @@
 import { useEffect, useState } from "react";
-import { CmToKmConverter } from "./CmToKmConverter";
-import { MinuteToHourConverter } from "./MinuteToHourConverter";
+import Movie from "../../movie-app-practice01/src/components/Movie";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [movies, setMovies] = useState([]);
 
-  const countClickHandler = () => {
-    setCount((current) => current + 1);
+  const getMovies = async () => {
+    const response = await fetch(
+      `https://yts.mx/api/v2/list_movies.json?minimum_rating=8.5&sort_by=year`
+    );
+
+    const json = await response.json();
+
+    setMovies(json.data.movies);
+    setLoading(true);
   };
 
-  // console.log("APP ALWAYS RUN CODE");
-
   useEffect(() => {
-    console.log("APP CREATE RUN CODE");
+    getMovies();
   }, []);
-
-  useEffect(() => {
-    console.log("APP-COUNTER CHANGE RUN CODE");
-  }, [count]);
 
   return (
     <div>
-      <h1>Count {count}</h1>
-      <button onClick={countClickHandler}>Add</button>
-      <CmToKmConverter />
-      <MinuteToHourConverter />
+      {loading === false ? (
+        <h1>Loading...</h1>
+      ) : (
+        <div>
+          <h1>Movies {movies.length}</h1>
+          {movies.map((movie) => (
+            <Movie key={movie.id} movie={movie} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
