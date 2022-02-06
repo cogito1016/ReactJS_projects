@@ -286,3 +286,21 @@ Router란 URL을 보고있는 Component
 URL에 따라서 HOME이나 Detail을 보여줄 수 있다면 아래의 예시를 들 수 있다.      
 localhost:3000/   
 localhost:3000/detail   
+
+### React Router
+설치   
+npm i react-router-dom@5.3.0
+
+라우터의 종류   
+BroserRouter, HashRouter   
+
+```javascript
+    <Router>
+      <Switch>
+        <Route path="/">
+          <Home />
+        </Route>
+      </Switch>
+    </Router>
+```
+path="/"의 의미는, 홈 경로('localhost:3000/'일때 보여주는 컴포넌트를 의미한다.   
