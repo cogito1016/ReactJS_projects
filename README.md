@@ -292,11 +292,19 @@ localhost:3000/detail
 npm i react-router-dom@5.3.0
 
 라우터의 종류   
-BroserRouter, HashRouter   
+BroserRouter   
+-브라우저에 일반적인 URL로 표시됨
+
+HashRouter    
+-브라우저에 일반적인 URL앞단에 /#/이 붙게됨
+
 
 ```javascript
     <Router>
       <Switch>
+        <Route path="/movie">
+          <Detail />
+        </Route>
         <Route path="/">
           <Home />
         </Route>
@@ -304,3 +312,20 @@ BroserRouter, HashRouter
     </Router>
 ```
 path="/"의 의미는, 홈 경로('localhost:3000/'일때 보여주는 컴포넌트를 의미한다.   
+
+
+```javascript
+<h2>
+  <a href="/movie">{movie.title}</a>
+</h2>
+```
+이렇게하면 /movie에 라우팅된 Detail컴포넌트가 렌더링되지만, 페이지 전체가 리로딩되는것을 볼 수 있다.   
+새로고침없어도 다른페이지로 이동시켜주는 컴포넌트인 Link를 사용하자.   
+
+```javascript
+<h2>
+  <Link to="/movie">{movie.title}</Link>
+</h2>
+```
+Link는 a의 대체로 사용할 수 있으며 href속성대신 to속성을 이용한다.   
+그렇다면 요소 클릭 시 페이지 전체가 로드되지않아 빠른 UX를 지원할 수 있다.   
