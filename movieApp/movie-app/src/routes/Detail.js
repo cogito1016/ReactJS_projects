@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 function Detail() {
+  const [loading, setLoading] = useState(false);
   const { id } = useParams();
   const [movie, setMovie] = useState();
 
@@ -12,13 +13,18 @@ function Detail() {
     const json = await response.json();
     const result = json.data.movie;
     setMovie(result);
+    setLoading(true);
   };
 
   useEffect(() => {
     getDetailMovie();
   }, []);
 
-  return <h1>{movie.title}</h1>;
+  return (
+    <div>
+      {loading === false ? <h1>Loading...</h1> : <h1>{movie.title}</h1>}
+    </div>
+  );
 }
 
 export default Detail;
