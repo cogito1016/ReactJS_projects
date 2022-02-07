@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 
 function Movie({ movie }) {
+  const id = movie.id;
+
   return (
     <div>
       <img src={movie.medium_cover_image} alt={movie.title} />
       <h2>
-        <Link to="/movie">{movie.title}</Link>
+        <Link to={`/movie/${id}`}>{movie.title}</Link>
       </h2>
       <p>{movie.summary}</p>
 

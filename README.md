@@ -329,3 +329,39 @@ path="/"의 의미는, 홈 경로('localhost:3000/'일때 보여주는 컴포넌
 ```
 Link는 a의 대체로 사용할 수 있으며 href속성대신 to속성을 이용한다.   
 그렇다면 요소 클릭 시 페이지 전체가 로드되지않아 빠른 UX를 지원할 수 있다.   
+
+#### Dynamic URL in React-Router
+Dynamic하다는건 URL에 변수를넣을 수 있다는 것 이다.   
+
+```javascript
+//Router Part
+<Route path="/movie/:id">
+  <Detail />
+</Route>
+```
+:(콜론)뒤에 변수명을 사용한다.   
+그렇다면 http://localhost:3000/movie/1 와 같이 사용가능 하다.   
+
+```javascript
+//Link Tag
+<h2>
+  <Link to={`/movie/${id}`}>{movie.title}</Link>
+</h2>
+```
+
+제목을 클릭했을 때 이동되는 경로에 아이디를넣어준다면   
+클릭 시 http://localhost:3000/movie/37384 과 같이 URL이 변경되게 된다.   
+
+그렇다면 <Detail>태그에서 ID는 어떻게 받아낼 수 있을까?   
+
+#### useParams
+React-Router라이브러리에는 useParams라는 객체가 존재한다.   
+이 객체는 URL에 존재하는 변수들을 담고있는 객체를 의미한다.   
+```javascript
+import { useParams } from "react-router-dom";
+
+const {id} = useParams();
+console.log(id);
+```
+위와같이 작성 시 :id로 넘겨줬던 id변수의값을 가져올 수 있다.   
+
