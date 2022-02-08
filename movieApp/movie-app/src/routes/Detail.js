@@ -12,6 +12,7 @@ function Detail() {
     );
     const json = await response.json();
     const result = json.data.movie;
+    console.log(result);
     setMovie(result);
     setLoading(true);
   };
@@ -22,7 +23,19 @@ function Detail() {
 
   return (
     <div>
-      {loading === false ? <h1>Loading...</h1> : <h1>{movie.title}</h1>}
+      {loading === false ? (
+        <h1>Loading...</h1>
+      ) : (
+        <div>
+          <img src={movie.medium_cover_image} alt={movie.title} />
+          <h1>{movie.title}</h1>
+          <h4>
+            {" "}
+            LIKE : {movie.like_count} RATING : {movie.rating}
+          </h4>
+          <p>{movie.description_full}</p>
+        </div>
+      )}
     </div>
   );
 }
