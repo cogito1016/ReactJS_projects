@@ -376,7 +376,40 @@ packages-json 에 build라는 script
 (코드가 압축되고 최적화된다는 의미임)
 
 command :: npm run build   
+이 커맨드 실행 후에는 build라는 폴더가 생김   
+(코드가 압축되고 최적화된 결과물)   
+이제 이 결과물을 github에 push하면되는데! 그전에!   
+
+package.json으로 가서   
+"homepage" : "https://cogito1016.github.io/ReactJS_projects/"   
+이렇게 추가해주면 됨.   
+
+(github.io/이후 적는 레포지토리이름은 git remote -v 를 실행해보면 확인가능)   
+
+그리고 sciprts키 안에 deploy를 작성해주면 됨.   
+deploy는 우리가 설치하면 gh-pages를 실행시키고, build라는 디렉토리를 가져가는역할을 함.   
+
+그렇다면, build후에는 항상 deploy를 해주어야 할텐데, 그것이 싫다면 predeploy command를 만들어주면 됨.   
+
+결과적으로   
+```javascript
+"scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build",
+    "predeploy" : "npm run build"
+  },
 
 
+  "homepage" : "https://cogito1016.github.io/ReactJS_projects/"
+```
+요렇게 추가되겠지.   
+
+그럼 npm run deploy시, npm run build가 실행될거고,   
+gh-pages로인해 build폴더가 반영될 것 임.   
+
+gh-pages -d buiild의 역할은 build폴더의 결과물을, 해당 URL에 업로드시키는 역할을 해준다.(업로드에 몇분이 걸림)   
 
 
