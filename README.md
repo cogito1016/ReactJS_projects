@@ -365,3 +365,18 @@ console.log(id);
 ```
 위와같이 작성 시 :id로 넘겨줬던 id변수의값을 가져올 수 있다.   
 
+
+### GH Pages
+npm i gh-pages
+결과물을 github pages에 업로드할수있게하는 패키지   
+html.cssjavscript 를올리면 무료배포가 됨   
+
+packages-json 에 build라는 script   
+이 script를 생성하면 우리 웹사이트의 production ready code를 생성하게 됨   
+(코드가 압축되고 최적화된다는 의미임)
+
+command :: npm run build   
+
+
+
+

@@ -26,7 +26,7 @@ function Detail() {
       {loading === false ? (
         <h1>Loading...</h1>
       ) : (
-        <div>
+        <div> 
           <img src={movie.medium_cover_image} alt={movie.title} />
           <h1>{movie.title}</h1>
           <h4>
