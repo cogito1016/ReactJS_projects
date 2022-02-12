@@ -7,7 +7,11 @@ function Movie({ movie }) {
       <h1>
         <Link to={`/movie/${movie.id}`}>{movie.title}</Link>
       </h1>
-      <p>{movie.summary}</p>
+      <p>
+        {movie.summary.length > 235
+          ? `${movie.summary.slice(0, 253)}...`
+          : movie.summary}
+      </p>
       {movie.hasOwnProperty("genres") ? (
         <ul>
           {movie.genres.map((genre, idx) => (
